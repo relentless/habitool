@@ -2,8 +2,8 @@
 
 A high‑level checklist to track major milestones while building the Habitool application. Tasks are intentionally broad so you can focus on progress without getting lost in details.
 
-1. **Define Requirements & Architecture** – agree on functional and non‑functional requirements, sketch the high‑level system design and data model.
-2. **Set Up Solution & Projects** – create the .NET solution with API, Blazor WebAssembly, and test projects; configure dependencies.
+1. **Define Requirements & Architecture** – agree on functional and non‑functional requirements, sketch the high‑level system design and data model. * (complete) *
+2. **Set Up Solution & Projects** – create the .NET solution with API, Blazor WebAssembly, and test projects; configure dependencies. *(completed 2026-02-26)*
 3. **Provision Azure Infrastructure** – author Bicep templates for Cosmos DB, App Services, Storage, Key Vault, Application Insights and deploy a baseline environment.
 4. **Implement Core Backend API** – build the ASP.NET Core API with authentication, habit management, logging, and basic analytics; include unit tests.
 5. **Implement Blazor Frontend** – create key UI pages (dashboard, habit list, log entry, statistics) with components and state handling; add frontend tests.
@@ -29,7 +29,8 @@ A high‑level checklist to track major milestones while building the Habitool a
 
 - **Total major tasks**: 12
 - **Completed**: 1 (Requirements & Architecture – 2026‑02‑26)
-- **Remaining**: 11
+- **Completed**: 2 (Requirements & Architecture – 2026‑02‑26, Solution & Projects – 2026‑02‑26)
+- **Remaining**: 9
 
 ---
 

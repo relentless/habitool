@@ -1,0 +1,39 @@
+@page "/habits"
+@namespace Habitool.Web.Pages
+@inject HttpClient Http
+
+<h3>Habits</h3>
+
+@if (habits is null)
+{
+    <p><em>Loading...</em></p>
+}
+else if (habits.Length == 0)
+{
+    <p>No habits found.</p>
+}
+else
+{
+    <ul>
+        @foreach (var habit in habits)
+        {
+            <li>@habit.Title - @habit.Description</li>
+        }
+    </ul>
+}
+
+@code {
+    Habit[]? habits;
+
+    protected override async Task OnInitializedAsync()
+    {
+        habits = await Http.GetFromJsonAsync<Habit[]>("/api/habits");
+    }
+
+    private class Habit
+    {
+        public int Id { get; set; }
+        public string? Title { get; set; }
+        public string? Description { get; set; }
+    }
+}

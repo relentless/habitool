@@ -1,0 +1,6 @@
+@Habitool.API_HostAddress = http://localhost:5063
+
+GET {{Habitool.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
