@@ -1,10 +1,15 @@
 @page "/habits"
 @namespace Habitool.Web.Pages
 @inject HttpClient Http
+@inject Microsoft.JSInterop.IJSRuntime JS
 
 <h3>Habits</h3>
 
-@if (habits is null)
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <div class="alert alert-danger">@errorMessage</div>
+}
+else if (habits is null)
 {
     <p><em>Loading...</em></p>
 }
@@ -24,10 +29,19 @@ else
 
 @code {
     Habit[]? habits;
+    string? errorMessage;
 
     protected override async Task OnInitializedAsync()
     {
-        habits = await Http.GetFromJsonAsync<Habit[]>("/api/habits");
+        try
+        {
+            habits = await Http.GetFromJsonAsync<Habit[]>("/api/habits");
+        }
+        catch (Exception ex)
+        {
+            errorMessage = "An error occurred while loading habits. See console for details.";
+            await JS.InvokeVoidAsync("console.error", ex.ToString());
+        }
     }
 
     private class Habit
