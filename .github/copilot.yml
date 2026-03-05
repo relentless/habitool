@@ -1,0 +1,16 @@
+# GitHub Copilot Instructions for Habitool project
+#
+# This file provides guidance to GitHub Copilot when suggesting code within
+# the Habitool repository. Customize the guidelines to match project
+# conventions and developer preferences.
+
+instructions:
+  - "When generating code, prefer C# idioms and .NET 8 patterns."
+  - "Follow the project's naming conventions: PascalCase for classes and methods, camelCase for local variables."
+  - "Write succinct, readable methods with XML comments where appropriate."
+  - "For Razor components, maintain accessibility and use Blazor best practices."
+  - "Use Dependency Injection and register services in Program.cs."
+  - "Include unit tests alongside new features using xUnit conventions."
+  - "Avoid using region directives unless absolutely necessary."
+  - "Keep response comments to under 80 characters per line."
+  - "When updating files, ensure the solution still builds and passes existing tests."

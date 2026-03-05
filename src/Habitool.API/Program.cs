@@ -41,9 +41,9 @@ var sampleHabits = new List<Habit>
 // sample log entries
 var sampleLogs = new List<LogEntry>
 {
-    new LogEntry(1, 1, DateTime.UtcNow.AddDays(-1)),
-    new LogEntry(2, 1, DateTime.UtcNow.AddDays(-2)),
-    new LogEntry(3, 2, DateTime.UtcNow.AddDays(-1))
+    new LogEntry { Id = 1, HabitId = 1, Timestamp = DateTime.UtcNow.AddDays(-1) },
+    new LogEntry { Id = 2, HabitId = 1, Timestamp = DateTime.UtcNow.AddDays(-2) },
+    new LogEntry { Id = 3, HabitId = 2, Timestamp = DateTime.UtcNow.AddDays(-1) }
 };
 
 // simple insights strings
@@ -96,9 +96,9 @@ app.MapGet("/api/habits/{id}", (int id) =>
 app.MapPost("/api/logs", (LogEntry entry) =>
 {
     var newId = sampleLogs.Any() ? sampleLogs.Max(l => l.Id) + 1 : 1;
-    var created = entry with { Id = newId };
-    sampleLogs.Add(created);
-    return Results.Created($"/api/logs/{created.Id}", created);
+    entry.Id = newId;
+    sampleLogs.Add(entry);
+    return Results.Created($"/api/logs/{entry.Id}", entry);
 });
 
 app.MapGet("/api/logs/{habitId}", (int habitId) =>
@@ -117,8 +117,3 @@ app.MapGet("/api/statistics/{habitId}", (int habitId) =>
 app.MapGet("/api/insights", () => Results.Ok(sampleInsights));
 
 app.Run();
-
-
-record LogEntry(int Id, int HabitId, DateTime Timestamp);
-
-record Statistics(int HabitId, int TotalLogs, int CurrentStreak);
